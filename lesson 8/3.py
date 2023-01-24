@@ -56,5 +56,5 @@ n = int(input("Количество вершин в графе: "))
 s = int(input("Введите вершину начала: "))
 f = int(input("Введите вершину конца: "))
 
-g = generate_graph(30)
+g = generate_graph(n)
 print(bfs(g, s, f))
