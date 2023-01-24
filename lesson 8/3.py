@@ -14,7 +14,7 @@ def generate_graph(num):
     for i in range(num):
         graph[i] = tuple(j for j in range(num) if j != i)
 
-    return f'{graph}'
+    return graph
 
 def bfs(graph, start, finish):
     parent = [None for _ in range(len(graph))]
@@ -30,12 +30,11 @@ def bfs(graph, start, finish):
 
         if curent == finish:
             break
-
-        for i, vertex in enumerate(graph[curent]):
-            if vertex == 1 and not is_visited[i]:
-                is_visited[i] = True
-                parent[i] = curent
-                deq.appendleft(i)
+        for vertex in graph[curent]:
+            if not is_visited[vertex]:
+                is_visited[vertex] = True
+                parent[vertex] = curent
+                deq.appendleft(vertex)
     else:
         return f'Из вершины {start} нельзя попасть в вершину {finish}'
 
@@ -57,6 +56,5 @@ n = int(input("Количество вершин в графе: "))
 s = int(input("Введите вершину начала: "))
 f = int(input("Введите вершину конца: "))
 
-g = generate_graph(n)
-print(generate_graph(n))
+g = generate_graph(30)
 print(bfs(g, s, f))
